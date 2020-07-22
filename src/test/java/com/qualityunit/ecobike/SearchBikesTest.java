@@ -18,24 +18,24 @@ public class SearchBikesTest {
     //each characteristic of these bikes must be as unique as possible
     //otherwise the program may ask how many items to show on one page
     private FoldingBike testFoldingBike = new FoldingBike("This is a folding bike test"  //brand name
-            , 199                                                //wheels size
-            , 99                                                     //gears
-            , 999999                                                //weight
-            , true                                                   //has lights
-            , "mottled with white strips and skyblue dots"           //color
-            , 999999);                                               //price
-    private Speedelec testSpeedelec = new Speedelec("This is a speedelec test"  //brand name
-            , 499                                         //max speed
-            , 999998                                         //weight
-            , true                                            //has lights
-            , 999999                                  //battery capacity
-            , "mottled with orange strips and skyblue dots"   //color
-            , 999998);                                        //price
-    private ElectricBike testElectricBike = new ElectricBike("This is an electric bike test"  //brand name
-            , 498                                        //max speed
-            , 999997                                        //weight
+            , 199                                            //wheels size
+            , 99                                             //gears
+            , 999999                                         //weight
             , true                                           //has lights
-            , 999998                                 //battery capacity
+            , "mottled with white strips and skyblue dots"   //color
+            , 999999);                                       //price
+    private Speedelec testSpeedelec = new Speedelec("This is a speedelec test"  //brand name
+            , 499                                            //max speed
+            , 999998                                         //weight
+            , true                                           //has lights
+            , 999999                                         //battery capacity
+            , "mottled with orange strips and skyblue dots"  //color
+            , 999998);                                       //price
+    private ElectricBike testElectricBike = new ElectricBike("This is an electric bike test"  //brand name
+            , 498                                            //max speed
+            , 999997                                         //weight
+            , true                                           //has lights
+            , 999998                                         //battery capacity
             , "mottled with green strips and skyblue dots"   //color
             , 999997);                                       //price
 
