@@ -7,6 +7,7 @@ import com.qualityunit.ecobike.view.ConsoleView;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SearchBikesCommand implements Command {
 
@@ -40,17 +41,21 @@ public class SearchBikesCommand implements Command {
                 "\n2 - Speedelec" +
                 "\n3 - Electric bike", 1, 3);
 
+        readGeneralCharacteristics();
+
+        List<Bike> bikes = null;
         switch (choice) {
             case 1:
-                findFoldingBike();
+                bikes = findFoldingBikes();
                 break;
             case 2:
-                findSpeedelec();
+                bikes = findSpeedelecs();
                 break;
             case 3:
-                findElectricBike();
+                bikes = findElectricBikes();
                 break;
         }
+        showResults(bikes);
     }
 
     private void setDefaultCharacteristics() {
@@ -72,7 +77,7 @@ public class SearchBikesCommand implements Command {
         gearsTo = 100;
     }
 
-    private List<Bike> filterGeneralCharacteristics(BikeType type) {
+    private void readGeneralCharacteristics() {
         String s;
         s = ConsoleView.readString("Enter the bike brand or type 'any' if brand is not important");
         if (!s.equals("any")) brandSearchPart = s;
@@ -90,24 +95,9 @@ public class SearchBikesCommand implements Command {
         priceTo = range[1];
 
         lightsImportance = ConsoleView.readBoolean("Is lights availability important?");
-
-        synchronized (BikeRepository.getInstance()) {
-            return BikeRepository.getInstance()
-                    .findAll()
-                    .stream()
-                    .filter(b -> b.getType() == type)
-                    .filter(b -> b.getBrand().contains(brandSearchPart))
-                    .filter(b -> b.getWeight() >= weightFrom && b.getWeight() <= weightTo)
-                    .filter(b -> b.getColor().contains(colorSearchPart))
-                    .filter(b -> b.getPrice() >= priceFrom && b.getPrice() <= priceTo)
-                    .filter(b -> !lightsImportance || b.hasLights())
-                    .collect(Collectors.toList());
-        }
     }
 
-    private void findFoldingBike() {
-        List<Bike> bikes = filterGeneralCharacteristics(BikeType.FOLDING_BIKE);
-
+    private List<Bike> findFoldingBikes() {
         int[] range;
         range = ConsoleView.readRange("The number of gears range", gearsFrom, gearsTo);
         gearsFrom = range[0];
@@ -117,16 +107,10 @@ public class SearchBikesCommand implements Command {
         wheelsSizeFrom = range[0];
         wheelsSizeTo = range[1];
 
-        showResults(bikes.stream()
-                .map(b -> (FoldingBike) b)
-                .filter(b -> b.getGears() >= gearsFrom && b.getGears() <= gearsTo)
-                .filter(b -> b.getWheelsSize() >= wheelsSizeFrom && b.getWheelsSize() <= wheelsSizeTo)
-                .collect(Collectors.toList()));
+       return  getResultList(BikeType.FOLDING_BIKE);
     }
 
-    private void findSpeedelec() {
-        List<Bike> bikes = filterGeneralCharacteristics(BikeType.SPEEDELEC);
-
+    private List<Bike> findSpeedelecs() {
         int[] range;
         range = ConsoleView.readRange("The battery capacity range (in mAh)", batteryCapacityFrom, batteryCapacityTo);
         batteryCapacityFrom = range[0];
@@ -136,16 +120,10 @@ public class SearchBikesCommand implements Command {
         maxSpeedFrom = range[0];
         maxSpeedTo = range[1];
 
-        showResults(bikes.stream()
-                .map(b -> (Speedelec) b)
-                .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
-                .collect(Collectors.toList()));
+        return getResultList(BikeType.SPEEDELEC);
     }
 
-    private void findElectricBike() {
-        List<Bike> bikes = filterGeneralCharacteristics(BikeType.ELECTRIC_BIKE);
-
+    private List<Bike> findElectricBikes() {
         int[] range;
         range = ConsoleView.readRange("The battery capacity range (in mAh)", batteryCapacityFrom, batteryCapacityTo);
         batteryCapacityFrom = range[0];
@@ -155,16 +133,49 @@ public class SearchBikesCommand implements Command {
         maxSpeedFrom = range[0];
         maxSpeedTo = range[1];
 
-        showResults(bikes.stream()
-                .map(b -> (ElectricBike) b)
-                .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
-                .collect(Collectors.toList()));
+        return getResultList(BikeType.ELECTRIC_BIKE);
+    }
+
+    private List<Bike> getResultList(BikeType type) {
+        ConsoleView.write("Searching...");
+        if (type == BikeType.FOLDING_BIKE) {
+            return getGeneralCharacteristicsStream(type)
+                    .map(b -> (FoldingBike) b)
+                    .filter(b -> b.getGears() >= gearsFrom && b.getGears() <= gearsTo)
+                    .filter(b -> b.getWheelsSize() >= wheelsSizeFrom && b.getWheelsSize() <= wheelsSizeTo)
+                    .collect(Collectors.toList());
+        } else if (type == BikeType.SPEEDELEC) {
+            return getGeneralCharacteristicsStream(type)
+                    .map(b -> (Speedelec) b)
+                    .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
+                    .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                    .collect(Collectors.toList());
+        } else {
+            return getGeneralCharacteristicsStream(type)
+                    .map(b -> (ElectricBike) b)
+                    .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
+                    .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                    .collect(Collectors.toList());
+        }
+    }
+
+    private Stream<Bike> getGeneralCharacteristicsStream(BikeType type) {
+        return BikeRepository.getInstance()
+                .findAll()
+                .stream()
+                .filter(b -> b.getType() == type)
+                .filter(b -> b.getBrand().contains(brandSearchPart))
+                .filter(b -> b.getWeight() >= weightFrom && b.getWeight() <= weightTo)
+                .filter(b -> b.getColor().contains(colorSearchPart))
+                .filter(b -> b.getPrice() >= priceFrom && b.getPrice() <= priceTo)
+                .filter(b -> !lightsImportance || b.hasLights());
     }
 
     private void showResults(List<Bike> result) {
-        ShowCatalogCommand showCatalog = (ShowCatalogCommand) BikeController.getCommand(CommandType.SHOW_CATALOG);
-        showCatalog.setBikes(result);
-        BikeController.execute(CommandType.SHOW_CATALOG);
+        if (result != null) {
+            ShowCatalogCommand showCatalog = (ShowCatalogCommand) BikeController.getCommand(CommandType.SHOW_CATALOG);
+            showCatalog.setBikes(result);
+            BikeController.execute(CommandType.SHOW_CATALOG);
+        }
     }
 }
