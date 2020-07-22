@@ -138,24 +138,26 @@ public class SearchBikesCommand implements Command {
 
     private List<Bike> getResultList(BikeType type) {
         ConsoleView.write("Searching...");
-        if (type == BikeType.FOLDING_BIKE) {
-            return getGeneralCharacteristicsStream(type)
-                    .map(b -> (FoldingBike) b)
-                    .filter(b -> b.getGears() >= gearsFrom && b.getGears() <= gearsTo)
-                    .filter(b -> b.getWheelsSize() >= wheelsSizeFrom && b.getWheelsSize() <= wheelsSizeTo)
-                    .collect(Collectors.toList());
-        } else if (type == BikeType.SPEEDELEC) {
-            return getGeneralCharacteristicsStream(type)
-                    .map(b -> (Speedelec) b)
-                    .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                    .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
-                    .collect(Collectors.toList());
-        } else {
-            return getGeneralCharacteristicsStream(type)
-                    .map(b -> (ElectricBike) b)
-                    .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                    .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
-                    .collect(Collectors.toList());
+        synchronized (BikeRepository.getInstance()) {
+            if (type == BikeType.FOLDING_BIKE) {
+                return getGeneralCharacteristicsStream(type)
+                        .map(b -> (FoldingBike) b)
+                        .filter(b -> b.getGears() >= gearsFrom && b.getGears() <= gearsTo)
+                        .filter(b -> b.getWheelsSize() >= wheelsSizeFrom && b.getWheelsSize() <= wheelsSizeTo)
+                        .collect(Collectors.toList());
+            } else if (type == BikeType.SPEEDELEC) {
+                return getGeneralCharacteristicsStream(type)
+                        .map(b -> (Speedelec) b)
+                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
+                        .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                        .collect(Collectors.toList());
+            } else {
+                return getGeneralCharacteristicsStream(type)
+                        .map(b -> (ElectricBike) b)
+                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
+                        .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                        .collect(Collectors.toList());
+            }
         }
     }
 
