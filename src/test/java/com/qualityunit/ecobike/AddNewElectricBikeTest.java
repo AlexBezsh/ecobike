@@ -22,13 +22,7 @@ public class AddNewElectricBikeTest {
                 "\n566" +       //price
                 "\n2";          //change smth? - no
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();
@@ -78,13 +72,7 @@ public class AddNewElectricBikeTest {
                 "\n500" +       //new price
                 "\n2";          //change smth? - no
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();
@@ -127,13 +115,7 @@ public class AddNewElectricBikeTest {
                 "\n1000" +      //valid price
                 "\n2";          //change smth? - no
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();

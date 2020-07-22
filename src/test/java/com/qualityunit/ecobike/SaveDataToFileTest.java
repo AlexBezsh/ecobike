@@ -62,13 +62,7 @@ public class SaveDataToFileTest {
                 "\n568" +       //price
                 "\n2";          //change smth? - no
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         int startQuantity = BikeRepository.getInstance().findAll().size();
         BikeController.execute(CommandType.ADD_NEW_ELECTRIC_BIKE);

@@ -15,7 +15,7 @@ import java.io.*;
 
 public class SearchBikesTest {
 
-    //each characteristic of this bikes must be as unique as possible
+    //each characteristic of these bikes must be as unique as possible
     //otherwise the program may ask how many items to show on one page
     private FoldingBike testFoldingBike = new FoldingBike("This is a folding bike test"  //brand name
             , 199                                                //wheels size
@@ -97,13 +97,7 @@ public class SearchBikesTest {
                 "\nany" +                          //wheels size
                 "\nexit";                          //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -127,13 +121,7 @@ public class SearchBikesTest {
                 "\nany" +             //wheels size
                 "\nexit";             //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -155,13 +143,7 @@ public class SearchBikesTest {
                 "\nany" +                                        //wheels size
                 "\nexit";                                        //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -185,13 +167,7 @@ public class SearchBikesTest {
                 "\nany" +       //wheels size
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -215,13 +191,7 @@ public class SearchBikesTest {
                 "\nany" +       //wheels size
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -245,13 +215,7 @@ public class SearchBikesTest {
                 "\nany" +       //wheels size
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -275,13 +239,7 @@ public class SearchBikesTest {
                 "\n199" +       //to
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -303,13 +261,7 @@ public class SearchBikesTest {
                 "\nany" +                          //max speed
                 "\nexit";                          //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -333,13 +285,7 @@ public class SearchBikesTest {
                 "\nany" +             //max speed
                 "\nexit";             //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -361,13 +307,7 @@ public class SearchBikesTest {
                 "\nany" +                                         //max speed
                 "\nexit";                                         //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -391,13 +331,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -421,13 +355,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -451,13 +379,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -481,13 +403,7 @@ public class SearchBikesTest {
                 "\n499" +       //to
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -509,13 +425,7 @@ public class SearchBikesTest {
                 "\nany" +                           //max speed
                 "\nexit";                           //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -539,13 +449,7 @@ public class SearchBikesTest {
                 "\nany" +             //max speed
                 "\nexit";             //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -567,13 +471,7 @@ public class SearchBikesTest {
                 "\nany" +                                         //max speed
                 "\nexit";                                         //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -597,13 +495,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -627,13 +519,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -657,13 +543,7 @@ public class SearchBikesTest {
                 "\nany" +       //max speed
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
@@ -687,13 +567,7 @@ public class SearchBikesTest {
                 "\n498" +       //to
                 "\nexit";       //InterruptOperationException will be thrown
 
-        InputStream in = new ByteArrayInputStream(s.getBytes());
-        System.setIn(in);
-        ConsoleView.setReader(new BufferedReader(new InputStreamReader(System.in)));
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream out = new PrintStream(output);
-        System.setOut(out);
+        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
 
         BikeController.start(null);
         try {
