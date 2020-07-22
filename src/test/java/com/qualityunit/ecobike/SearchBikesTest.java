@@ -15,7 +15,7 @@ import java.io.*;
 
 public class SearchBikesTest {
 
-    //each characteristic of this bikes must be as unique as possible
+    //each characteristic of these bikes must be as unique as possible
     //otherwise the program may ask how many items to show on one page
     private FoldingBike testFoldingBike = new FoldingBike("This is a folding bike test"  //brand name
             , 199                                                //wheels size
