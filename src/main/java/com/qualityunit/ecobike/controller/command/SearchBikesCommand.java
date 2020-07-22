@@ -107,7 +107,7 @@ public class SearchBikesCommand implements Command {
         wheelsSizeFrom = range[0];
         wheelsSizeTo = range[1];
 
-       return  getResultList(BikeType.FOLDING_BIKE);
+        return getResultList(BikeType.FOLDING_BIKE);
     }
 
     private List<Bike> findSpeedelecs() {
@@ -142,20 +142,26 @@ public class SearchBikesCommand implements Command {
             if (type == BikeType.FOLDING_BIKE) {
                 return getGeneralCharacteristicsStream(type)
                         .map(b -> (FoldingBike) b)
-                        .filter(b -> b.getGears() >= gearsFrom && b.getGears() <= gearsTo)
-                        .filter(b -> b.getWheelsSize() >= wheelsSizeFrom && b.getWheelsSize() <= wheelsSizeTo)
+                        .filter(b -> b.getGears() >= gearsFrom
+                                && b.getGears() <= gearsTo
+                                && b.getWheelsSize() >= wheelsSizeFrom
+                                && b.getWheelsSize() <= wheelsSizeTo)
                         .collect(Collectors.toList());
             } else if (type == BikeType.SPEEDELEC) {
                 return getGeneralCharacteristicsStream(type)
                         .map(b -> (Speedelec) b)
-                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                        .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom
+                                && b.getBatteryCapacity() <= batteryCapacityTo
+                                && b.getMaxSpeed() >= maxSpeedFrom
+                                && b.getMaxSpeed() <= maxSpeedTo)
                         .collect(Collectors.toList());
             } else {
                 return getGeneralCharacteristicsStream(type)
                         .map(b -> (ElectricBike) b)
-                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom && b.getBatteryCapacity() <= batteryCapacityTo)
-                        .filter(b -> b.getMaxSpeed() >= maxSpeedFrom && b.getMaxSpeed() <= maxSpeedTo)
+                        .filter(b -> b.getBatteryCapacity() >= batteryCapacityFrom
+                                && b.getBatteryCapacity() <= batteryCapacityTo
+                                && b.getMaxSpeed() >= maxSpeedFrom
+                                && b.getMaxSpeed() <= maxSpeedTo)
                         .collect(Collectors.toList());
             }
         }
@@ -165,12 +171,12 @@ public class SearchBikesCommand implements Command {
         return BikeRepository.getInstance()
                 .findAll()
                 .stream()
-                .filter(b -> b.getType() == type)
-                .filter(b -> b.getBrand().contains(brandSearchPart))
-                .filter(b -> b.getWeight() >= weightFrom && b.getWeight() <= weightTo)
-                .filter(b -> b.getColor().contains(colorSearchPart))
-                .filter(b -> b.getPrice() >= priceFrom && b.getPrice() <= priceTo)
-                .filter(b -> !lightsImportance || b.hasLights());
+                .filter(b -> b.getType() == type
+                        && b.getBrand().contains(brandSearchPart)
+                        && b.getWeight() >= weightFrom && b.getWeight() <= weightTo
+                        && b.getColor().contains(colorSearchPart)
+                        && b.getPrice() >= priceFrom && b.getPrice() <= priceTo
+                        && (!lightsImportance || b.hasLights()));
     }
 
     private void showResults(List<Bike> result) {
