@@ -23,7 +23,8 @@ public class ShowCatalogTest {
                 "\n" + (pages + 1) +   //show next - invalid number
                 "\nexit";              //InterruptOperationException will be thrown
 
-        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
+        TestUtil.setInput(s);
+        ByteArrayOutputStream output = TestUtil.getOutput();
 
         try {
             BikeController.execute(CommandType.SHOW_CATALOG);

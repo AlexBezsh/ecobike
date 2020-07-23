@@ -22,7 +22,8 @@ public class AddNewElectricBikeTest {
                 "\n566" +       //price
                 "\n2";          //change smth? - no
 
-        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
+        TestUtil.setInput(s);
+        ByteArrayOutputStream output = TestUtil.getOutput();
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();
@@ -72,7 +73,8 @@ public class AddNewElectricBikeTest {
                 "\n500" +       //new price
                 "\n2";          //change smth? - no
 
-        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
+        TestUtil.setInput(s);
+        ByteArrayOutputStream output = TestUtil.getOutput();
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();
@@ -115,7 +117,8 @@ public class AddNewElectricBikeTest {
                 "\n1000" +      //valid price
                 "\n2";          //change smth? - no
 
-        ByteArrayOutputStream output = TestUtil.setInputAndGetOutput(s);
+        TestUtil.setInput(s);
+        ByteArrayOutputStream output = TestUtil.getOutput();
 
         BikeController.start(null);
         int startQuantity = BikeRepository.getInstance().findAll().size();
