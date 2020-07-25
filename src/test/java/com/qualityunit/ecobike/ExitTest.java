@@ -81,7 +81,8 @@ public class ExitTest {
 
         BikeController.execute(CommandType.EXIT);
 
-        String newBike = AppUtil.toFileString(new ElectricBike("Brand", 44, 12000, false, 30000, "black", 567));
+        String newBike = AppUtil.toFileString(
+                new ElectricBike(AppUtil.idGenerator.getAndIncrement(), "Brand", 44, 12000, false, 30000, "black", 567));
         BufferedReader reader;
         boolean found = false;
         try {

@@ -2,6 +2,7 @@ package com.qualityunit.ecobike.controller.command;
 
 import com.qualityunit.ecobike.model.ElectricBike;
 import com.qualityunit.ecobike.repository.BikeRepository;
+import com.qualityunit.ecobike.util.AppUtil;
 import com.qualityunit.ecobike.view.ConsoleView;
 
 public class AddNewElectricBikeCommand implements Command {
@@ -27,7 +28,8 @@ public class AddNewElectricBikeCommand implements Command {
 
         correctMistakes();
 
-        ElectricBike bike = new ElectricBike(brand, maxSpeed, weight, lights, batteryCapacity, color, price);
+        ElectricBike bike = new ElectricBike(
+                AppUtil.idGenerator.getAndIncrement(), brand, maxSpeed, weight, lights, batteryCapacity, color, price);
         BikeRepository.getInstance().saveNewBike(bike);
 
         ConsoleView.write("New bike has been saved.");

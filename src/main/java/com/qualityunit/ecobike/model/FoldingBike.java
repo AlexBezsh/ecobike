@@ -10,8 +10,8 @@ public class FoldingBike extends Bike {
     public FoldingBike() {
     }
 
-    public FoldingBike(String brand, int wheelsSize, int gears, int weight, boolean lights, String color, int price) {
-        super(brand, weight, lights, color, price, BikeType.FOLDING_BIKE);
+    public FoldingBike(Long id, String brand, int wheelsSize, int gears, int weight, boolean lights, String color, int price) {
+        super(id, brand, weight, lights, color, price, BikeType.FOLDING_BIKE);
         this.wheelsSize = wheelsSize;
         this.gears = gears;
     }
@@ -48,17 +48,11 @@ public class FoldingBike extends Bike {
         if (this == o) return true;
         if (!(o instanceof FoldingBike)) return false;
         FoldingBike foldingBike = (FoldingBike) o;
-        return brand.equals(foldingBike.brand)
-                && wheelsSize == foldingBike.wheelsSize
-                && gears == foldingBike.gears
-                && weight == foldingBike.weight
-                && lights == foldingBike.lights
-                && color.equals(foldingBike.color)
-                && price == foldingBike.price;
+        return id.equals(foldingBike.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, wheelsSize, gears, weight, lights, color, price);
+        return Objects.hash(id);
     }
 }

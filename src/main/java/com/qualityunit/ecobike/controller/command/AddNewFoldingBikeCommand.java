@@ -2,6 +2,7 @@ package com.qualityunit.ecobike.controller.command;
 
 import com.qualityunit.ecobike.model.FoldingBike;
 import com.qualityunit.ecobike.repository.BikeRepository;
+import com.qualityunit.ecobike.util.AppUtil;
 import com.qualityunit.ecobike.view.ConsoleView;
 
 public class AddNewFoldingBikeCommand implements Command {
@@ -26,7 +27,8 @@ public class AddNewFoldingBikeCommand implements Command {
 
         correctMistakes();
 
-        FoldingBike bike = new FoldingBike(brand, wheelsSize, gears, weight, lights, color, price);
+        FoldingBike bike = new FoldingBike(
+                AppUtil.idGenerator.getAndIncrement(), brand, wheelsSize, gears, weight, lights, color, price);
         BikeRepository.getInstance().saveNewBike(bike);
 
         ConsoleView.write("New bike has been saved.");

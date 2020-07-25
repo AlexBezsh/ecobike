@@ -1,17 +1,21 @@
 package com.qualityunit.ecobike.util;
 
-import com.qualityunit.ecobike.model.*;
 import com.qualityunit.ecobike.model.Bike;
 import com.qualityunit.ecobike.model.ElectricBike;
 import com.qualityunit.ecobike.model.FoldingBike;
 import com.qualityunit.ecobike.model.Speedelec;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 public class AppUtil {
+
+    public static AtomicLong idGenerator = new AtomicLong(1);
 
     public static FoldingBike getFoldingBikeFromString(String s) {
         s = s.substring(13);
         String[] bikeCharacteristics = s.split("; ");
-        return new FoldingBike(bikeCharacteristics[0],
+        return new FoldingBike(idGenerator.getAndIncrement(),
+                bikeCharacteristics[0],
                 Integer.parseInt(bikeCharacteristics[1]),
                 Integer.parseInt(bikeCharacteristics[2]),
                 Integer.parseInt(bikeCharacteristics[3]),
@@ -23,7 +27,8 @@ public class AppUtil {
     public static Speedelec getSpeedelecFromString(String s) {
         s = s.substring(10);
         String[] bikeCharacteristics = s.split("; ");
-        return new Speedelec(bikeCharacteristics[0],
+        return new Speedelec(idGenerator.getAndIncrement(),
+                bikeCharacteristics[0],
                 Integer.parseInt(bikeCharacteristics[1]),
                 Integer.parseInt(bikeCharacteristics[2]),
                 bikeCharacteristics[3].equalsIgnoreCase("true"),
@@ -35,7 +40,8 @@ public class AppUtil {
     public static ElectricBike getElectricBikeFromString(String s) {
         s = s.substring(7);
         String[] bikeCharacteristics = s.split("; ");
-        return new ElectricBike(bikeCharacteristics[0],
+        return new ElectricBike(idGenerator.getAndIncrement(),
+                bikeCharacteristics[0],
                 Integer.parseInt(bikeCharacteristics[1]),
                 Integer.parseInt(bikeCharacteristics[2]),
                 bikeCharacteristics[3].equalsIgnoreCase("true"),

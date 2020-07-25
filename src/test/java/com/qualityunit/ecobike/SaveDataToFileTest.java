@@ -5,7 +5,6 @@ import com.qualityunit.ecobike.controller.command.CommandType;
 import com.qualityunit.ecobike.model.ElectricBike;
 import com.qualityunit.ecobike.repository.BikeRepository;
 import com.qualityunit.ecobike.util.AppUtil;
-import com.qualityunit.ecobike.view.ConsoleView;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -81,7 +80,8 @@ public class SaveDataToFileTest {
 
         BikeController.execute(CommandType.SAVE_DATA_TO_FILE);
 
-        String newBike = AppUtil.toFileString(new ElectricBike("Brand", 44, 12000, false, 30000, "black", 568));
+        String newBike = AppUtil.toFileString(
+                new ElectricBike(AppUtil.idGenerator.getAndIncrement(), "Brand", 44, 12000, false, 30000, "black", 568));
         BufferedReader reader;
         boolean found = false;
         try {

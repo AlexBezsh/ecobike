@@ -2,6 +2,7 @@ package com.qualityunit.ecobike.model;
 
 public abstract class Bike {
 
+    protected Long id;
     protected String brand;
     protected int weight;
     protected boolean lights;
@@ -12,13 +13,22 @@ public abstract class Bike {
     public Bike() {
     }
 
-    public Bike(String brand, int weight, boolean lights, String color, int price, BikeType type) {
+    public Bike(Long id, String brand, int weight, boolean lights, String color, int price, BikeType type) {
+        this.id = id;
         this.brand = brand;
         this.weight = weight;
         this.lights = lights;
         this.color = color;
         this.price = price;
         this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBrand() {

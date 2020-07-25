@@ -2,6 +2,7 @@ package com.qualityunit.ecobike.controller.command;
 
 import com.qualityunit.ecobike.model.Speedelec;
 import com.qualityunit.ecobike.repository.BikeRepository;
+import com.qualityunit.ecobike.util.AppUtil;
 import com.qualityunit.ecobike.view.ConsoleView;
 
 public class AddNewSpeedelecCommand implements Command {
@@ -27,7 +28,8 @@ public class AddNewSpeedelecCommand implements Command {
 
         correctMistakes();
 
-        Speedelec bike = new Speedelec(brand, maxSpeed, weight, lights, batteryCapacity, color, price);
+        Speedelec bike = new Speedelec(
+                AppUtil.idGenerator.getAndIncrement(), brand, maxSpeed, weight, lights, batteryCapacity, color, price);
         BikeRepository.getInstance().saveNewBike(bike);
 
         ConsoleView.write("New bike has been saved.");

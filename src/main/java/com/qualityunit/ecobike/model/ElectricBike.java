@@ -10,8 +10,8 @@ public class ElectricBike extends Bike {
     public ElectricBike() {
     }
 
-    public ElectricBike(String brand, int maxSpeed, int weight, boolean lights, int batteryCapacity, String color, int price) {
-        super(brand, weight, lights, color, price, BikeType.ELECTRIC_BIKE);
+    public ElectricBike(Long id, String brand, int maxSpeed, int weight, boolean lights, int batteryCapacity, String color, int price) {
+        super(id, brand, weight, lights, color, price, BikeType.ELECTRIC_BIKE);
         this.maxSpeed = maxSpeed;
         this.batteryCapacity = batteryCapacity;
     }
@@ -48,17 +48,11 @@ public class ElectricBike extends Bike {
         if (this == o) return true;
         if (!(o instanceof ElectricBike)) return false;
         ElectricBike electricBike = (ElectricBike) o;
-        return brand.equals(electricBike.brand)
-                && maxSpeed == electricBike.maxSpeed
-                && weight == electricBike.weight
-                && lights == electricBike.lights
-                && batteryCapacity == electricBike.batteryCapacity
-                && color.equals(electricBike.color)
-                && price == electricBike.price;
+        return id.equals(electricBike.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, maxSpeed, weight, lights, batteryCapacity, color, price);
+        return Objects.hash(id);
     }
 }
