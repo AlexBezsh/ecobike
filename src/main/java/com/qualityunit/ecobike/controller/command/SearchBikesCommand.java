@@ -43,7 +43,7 @@ public class SearchBikesCommand implements Command {
 
         readGeneralCharacteristics();
 
-        List<Bike> bikes = null;
+        List<AbstractBike> bikes = null;
         switch (choice) {
             case 1:
                 bikes = findFoldingBikes();
@@ -97,46 +97,53 @@ public class SearchBikesCommand implements Command {
         lightsImportance = ConsoleView.readBoolean("Is lights availability important?");
     }
 
-    private List<Bike> findFoldingBikes() {
+    private List<AbstractBike> findFoldingBikes() {
+        readGearsQuantityRange();
+        readWheelsSizeRange();
+        return getResultList(BikeType.FOLDING_BIKE);
+    }
+
+    private List<AbstractBike> findSpeedelecs() {
+        readBatteryCapacityRange();
+        readMaxSpeedRange();
+        return getResultList(BikeType.SPEEDELEC);
+    }
+
+    private List<AbstractBike> findElectricBikes() {
+        readBatteryCapacityRange();
+        readMaxSpeedRange();
+        return getResultList(BikeType.ELECTRIC_BIKE);
+    }
+
+    private void readGearsQuantityRange() {
         int[] range;
         range = ConsoleView.readRange("The number of gears range", gearsFrom, gearsTo);
         gearsFrom = range[0];
         gearsTo = range[1];
+    }
 
+    private void readWheelsSizeRange() {
+        int[] range;
         range = ConsoleView.readRange("Wheels size range (in inch)", wheelsSizeFrom, wheelsSizeTo);
         wheelsSizeFrom = range[0];
         wheelsSizeTo = range[1];
-
-        return getResultList(BikeType.FOLDING_BIKE);
     }
 
-    private List<Bike> findSpeedelecs() {
+    private void readBatteryCapacityRange() {
         int[] range;
         range = ConsoleView.readRange("The battery capacity range (in mAh)", batteryCapacityFrom, batteryCapacityTo);
         batteryCapacityFrom = range[0];
         batteryCapacityTo = range[1];
-
-        range = ConsoleView.readRange("The maximum speed range (in km/h)", maxSpeedFrom, maxSpeedTo);
-        maxSpeedFrom = range[0];
-        maxSpeedTo = range[1];
-
-        return getResultList(BikeType.SPEEDELEC);
     }
 
-    private List<Bike> findElectricBikes() {
+    private void readMaxSpeedRange() {
         int[] range;
-        range = ConsoleView.readRange("The battery capacity range (in mAh)", batteryCapacityFrom, batteryCapacityTo);
-        batteryCapacityFrom = range[0];
-        batteryCapacityTo = range[1];
-
         range = ConsoleView.readRange("The maximum speed range (in km/h)", maxSpeedFrom, maxSpeedTo);
         maxSpeedFrom = range[0];
         maxSpeedTo = range[1];
-
-        return getResultList(BikeType.ELECTRIC_BIKE);
     }
 
-    private List<Bike> getResultList(BikeType type) {
+    private List<AbstractBike> getResultList(BikeType type) {
         ConsoleView.write("Searching...");
         synchronized (BikeRepository.getInstance()) {
             if (type == BikeType.FOLDING_BIKE) {
@@ -167,7 +174,7 @@ public class SearchBikesCommand implements Command {
         }
     }
 
-    private Stream<Bike> getGeneralCharacteristicsStream(BikeType type) {
+    private Stream<AbstractBike> getGeneralCharacteristicsStream(BikeType type) {
         return BikeRepository.getInstance()
                 .findAll()
                 .stream()
@@ -179,7 +186,7 @@ public class SearchBikesCommand implements Command {
                         && (!lightsImportance || b.hasLights()));
     }
 
-    private void showResults(List<Bike> result) {
+    private void showResults(List<AbstractBike> result) {
         if (result != null) {
             ShowCatalogCommand showCatalog = (ShowCatalogCommand) BikeController.getCommand(CommandType.SHOW_CATALOG);
             showCatalog.setBikes(result);

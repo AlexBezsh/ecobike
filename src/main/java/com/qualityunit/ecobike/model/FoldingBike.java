@@ -2,7 +2,7 @@ package com.qualityunit.ecobike.model;
 
 import java.util.Objects;
 
-public class FoldingBike extends Bike {
+public class FoldingBike extends AbstractBike {
 
     private int wheelsSize;
     private int gears;

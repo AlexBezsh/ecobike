@@ -2,7 +2,7 @@ package com.qualityunit.ecobike.controller.command;
 
 import com.qualityunit.ecobike.Main;
 import com.qualityunit.ecobike.controller.BikeController;
-import com.qualityunit.ecobike.model.Bike;
+import com.qualityunit.ecobike.model.AbstractBike;
 import com.qualityunit.ecobike.repository.BikeRepository;
 import com.qualityunit.ecobike.util.AppUtil;
 import com.qualityunit.ecobike.view.ConsoleView;
@@ -57,7 +57,7 @@ public class SaveDataToFileCommand implements Command {
             writer = getWriter();
         }
         synchronized (BikeRepository.getInstance()) {
-            List<Bike> bikes = BikeRepository.getInstance().findAll();
+            List<AbstractBike> bikes = BikeRepository.getInstance().findAll();
             int bikesQuantity = bikes.size();
             try {
                 for (int i = 0; i < bikesQuantity; i++) {

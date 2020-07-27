@@ -1,6 +1,6 @@
 package com.qualityunit.ecobike.repository;
 
-import com.qualityunit.ecobike.model.Bike;
+import com.qualityunit.ecobike.model.AbstractBike;
 
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +10,7 @@ public class BikeRepository {
 
     private static BikeRepository repository;
     private static AtomicBoolean hasChanged = new AtomicBoolean(false);
-    private List<Bike> bikes;
+    private List<AbstractBike> bikes;
 
     private BikeRepository() {
     }
@@ -28,17 +28,17 @@ public class BikeRepository {
         }
     }
 
-    public synchronized void initDatabase(List<Bike> bikes) {
+    public synchronized void initDatabase(List<AbstractBike> bikes) {
         if (this.bikes == null) {
             this.bikes = bikes;
         }
     }
 
-    public List<Bike> findAll() {
+    public List<AbstractBike> findAll() {
         return Collections.unmodifiableList(bikes);
     }
 
-    public synchronized void saveNewBike(Bike bike) {
+    public synchronized void saveNewBike(AbstractBike bike) {
         bikes.add(bike);
         hasChanged.set(true);
     }

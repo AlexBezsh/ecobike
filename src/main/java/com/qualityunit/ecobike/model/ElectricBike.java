@@ -2,7 +2,7 @@ package com.qualityunit.ecobike.model;
 
 import java.util.Objects;
 
-public class ElectricBike extends Bike {
+public class ElectricBike extends AbstractBike {
 
     private int maxSpeed;
     private int batteryCapacity;

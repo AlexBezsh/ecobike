@@ -1,7 +1,7 @@
 package com.qualityunit.ecobike.controller.command;
 
 import com.qualityunit.ecobike.exception.InterruptOperationException;
-import com.qualityunit.ecobike.model.Bike;
+import com.qualityunit.ecobike.model.AbstractBike;
 import com.qualityunit.ecobike.repository.BikeRepository;
 import com.qualityunit.ecobike.view.ConsoleView;
 
@@ -9,13 +9,13 @@ import java.util.List;
 
 public class ShowCatalogCommand implements Command {
 
-    private List<Bike> bikes;
+    private List<AbstractBike> bikes;
     private int numberOfItems;
     private int page;
     private int pageSize;
     private int numberOfPages;
 
-    public void setBikes(List<Bike> bikes) { // SearchBikesCommand use it after search
+    public void setBikes(List<AbstractBike> bikes) { // SearchBikesCommand use it after search
         this.bikes = bikes;
     }
 

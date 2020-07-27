@@ -2,7 +2,7 @@ package com.qualityunit.ecobike.controller;
 
 import com.qualityunit.ecobike.Main;
 import com.qualityunit.ecobike.controller.command.*;
-import com.qualityunit.ecobike.model.Bike;
+import com.qualityunit.ecobike.model.AbstractBike;
 import com.qualityunit.ecobike.model.BikeType;
 import com.qualityunit.ecobike.repository.BikeRepository;
 import com.qualityunit.ecobike.util.AppUtil;
@@ -33,7 +33,7 @@ public class BikeController {
     }
 
     public static void start(String filePath) {
-        List<Bike> bikes;
+        List<AbstractBike> bikes;
         if (filePath == null) {
             String s = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
             if (s.contains("target")) {
@@ -53,8 +53,8 @@ public class BikeController {
         }
     }
 
-    private static List<Bike> retrieveDataFromFile(String filePath) {
-        List<Bike> bikes = new ArrayList<>();
+    private static List<AbstractBike> retrieveDataFromFile(String filePath) {
+        List<AbstractBike> bikes = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String s;

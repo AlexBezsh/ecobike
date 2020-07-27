@@ -1,6 +1,6 @@
 package com.qualityunit.ecobike.util;
 
-import com.qualityunit.ecobike.model.Bike;
+import com.qualityunit.ecobike.model.AbstractBike;
 import com.qualityunit.ecobike.model.ElectricBike;
 import com.qualityunit.ecobike.model.FoldingBike;
 import com.qualityunit.ecobike.model.Speedelec;
@@ -50,7 +50,7 @@ public class AppUtil {
                 Integer.parseInt(bikeCharacteristics[6]));
     }
 
-    public static String bikeToFileString(Bike bike) {
+    public static String bikeToFileString(AbstractBike bike) {
         if (bike instanceof FoldingBike) {
             return toFileString((FoldingBike) bike);
         } else if (bike instanceof Speedelec) {
