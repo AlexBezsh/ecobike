@@ -24,7 +24,7 @@ public class BikeController {
         ALL_COMMANDS.put(CommandType.ADD_NEW_FOLDING_BIKE, new AddNewFoldingBikeCommand());
         ALL_COMMANDS.put(CommandType.ADD_NEW_SPEEDELEC, new AddNewSpeedelecCommand());
         ALL_COMMANDS.put(CommandType.ADD_NEW_ELECTRIC_BIKE, new AddNewElectricBikeCommand());
-        ALL_COMMANDS.put(CommandType.FIND_BIKES, new SearchBikesCommand());
+        ALL_COMMANDS.put(CommandType.SEARCH_BIKES, new SearchBikesCommand());
         ALL_COMMANDS.put(CommandType.SAVE_DATA_TO_FILE, new SaveDataToFileCommand());
         ALL_COMMANDS.put(CommandType.EXIT, new ExitCommand());
     }
@@ -95,7 +95,7 @@ public class BikeController {
             case 4:
                 return CommandType.ADD_NEW_ELECTRIC_BIKE;
             case 5:
-                return CommandType.FIND_BIKES;
+                return CommandType.SEARCH_BIKES;
             case 6:
                 return CommandType.SAVE_DATA_TO_FILE;
             case 7:

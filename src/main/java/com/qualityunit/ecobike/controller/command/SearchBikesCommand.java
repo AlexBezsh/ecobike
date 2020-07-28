@@ -80,7 +80,9 @@ public class SearchBikesCommand implements Command {
     private void readGeneralCharacteristics() {
         String s;
         s = ConsoleView.readString("Enter the bike brand or type 'any' if brand is not important");
-        if (!s.equals("any")) brandSearchPart = s;
+        if (!s.equals("any")) {
+            brandSearchPart = s;
+        }
 
         int[] range;
         range = ConsoleView.readRange("Weight range of the bike (in grams)", weightFrom, weightTo);
@@ -88,7 +90,9 @@ public class SearchBikesCommand implements Command {
         weightTo = range[1];
 
         s = ConsoleView.readString("Enter color of the bike or type 'any' if color is not important");
-        if (!s.equals("any")) colorSearchPart = s;
+        if (!s.equals("any")) {
+            colorSearchPart = s;
+        }
 
         range = ConsoleView.readRange("Price range of the bike", priceFrom, priceTo);
         priceFrom = range[0];

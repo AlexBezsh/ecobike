@@ -6,7 +6,7 @@ public enum CommandType {
     ADD_NEW_FOLDING_BIKE,
     ADD_NEW_SPEEDELEC,
     ADD_NEW_ELECTRIC_BIKE,
-    FIND_BIKES,
+    SEARCH_BIKES,
     SAVE_DATA_TO_FILE,
     EXIT;
 }

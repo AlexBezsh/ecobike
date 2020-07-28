@@ -7,7 +7,6 @@ import com.qualityunit.ecobike.model.ElectricBike;
 import com.qualityunit.ecobike.model.FoldingBike;
 import com.qualityunit.ecobike.model.Speedelec;
 import com.qualityunit.ecobike.util.AppUtil;
-import com.qualityunit.ecobike.view.ConsoleView;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -99,7 +98,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -124,7 +123,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -147,7 +146,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -172,7 +171,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -197,7 +196,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -222,7 +221,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -247,7 +246,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testFoldingBike.toString()));
@@ -270,7 +269,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -295,7 +294,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -318,7 +317,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -343,7 +342,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -368,7 +367,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -393,7 +392,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -418,7 +417,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testSpeedelec.toString()));
@@ -441,7 +440,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -466,7 +465,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -489,7 +488,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -514,7 +513,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -539,7 +538,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -564,7 +563,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
@@ -589,7 +588,7 @@ public class SearchBikesTest {
 
         BikeController.start(null);
         try {
-            BikeController.execute(CommandType.FIND_BIKES);
+            BikeController.execute(CommandType.SEARCH_BIKES);
         } catch (InterruptOperationException ignore) {
         }
         Assert.assertTrue(output.toString().contains(testElectricBike.toString()));
